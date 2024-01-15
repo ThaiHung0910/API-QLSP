@@ -30,8 +30,9 @@ function checkNumber(value, errorId) {
 }
 
 function checkImage(value, errorId) {
-    var res = value.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
-    if(res !== null) {
+    var regex1 = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+    var regex2 = /\.(jpeg|jpg|gif|png)$/
+    if(regex1.test(value) || (regex2.test(value))) {
       getElement(errorId).style.display = 'none'
        getElement(errorId).innerHTML = ''
       return true
